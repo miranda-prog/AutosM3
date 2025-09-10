@@ -32,14 +32,14 @@ const autoData = {
     // 3. Imágenes para la galería
     // Asegúrate de que las rutas a las imágenes sean correctas
     imagenes: [
-        { src: "/AutosM3/assets/autos/Jeep Wrangler/jeep01.webp", thumb: "/AutosM3/assets/autos/Jeep Wrangler/thumbs/jeep01.webp", alt: "Jeep Wranfler 2014 foto 1" },
+        { src: "/AutosM3/assets/Jeep Wrangler/jeep01.webp", thumb: "/AutosM3/assets/autos/Jeep Wrangler/thumbs/jeep01.webp", alt: "Jeep Wranfler 2014 foto 1" },
         { src: "/AutosM3/assets/Jeep Wrangler/jeep02.webp", thumb: "/AutosM3/assets/Jeep Wrangler/thumbs/jeep02.webp",alt: "Jeep Wranfler 2014 foto 2" },
-        { src: "/assets/Jeep Wrangler/jeep03.webp", thumb: "/assets/Jeep Wrangler/thumbs/jeep03.webp",alt: "Jeep Wranfler 2014 foto 3" },
-        { src: "/assets/Jeep Wrangler/jeep04.webp", thumb: "/assets/Jeep Wrangler/thumbs/jeep04.webp",alt: "Jeep Wranfler 2014 foto 4" },
-        { src: "/assets/Jeep Wrangler/jeep05.webp", thumb: "/assets/Jeep Wrangler/thumbs/jeep05.webp",alt: "Jeep Wranfler 2014 foto 5" },
-        { src: "/assets/Jeep Wrangler/jeep06.webp", thumb: "/assets/Jeep Wrangler/thumbs/jeep06.webp",alt: "Jeep Wranfler 2014 foto 6" },
-        { src: "/assets/Jeep Wrangler/jeep07.webp", thumb: "/assets/Jeep Wrangler/thumbs/jeep07.webp",alt: "Jeep Wranfler 2014 foto 7" },
-        { src: "/assets/Jeep Wrangler/jeep08.webp", thumb: "/assets/Jeep Wrangler/thumbs/jeep08.webp", alt: "Jeep Wranfler 2014 foto 8" },
+        { src: "AutosM3/assets/Jeep Wrangler/jeep03.webp", thumb: "AutosM3/assets/Jeep Wrangler/thumbs/jeep03.webp",alt: "Jeep Wranfler 2014 foto 3" },
+        { src: "AutosM3/assets/Jeep Wrangler/jeep04.webp", thumb: "AutosM3/assets/Jeep Wrangler/thumbs/jeep04.webp",alt: "Jeep Wranfler 2014 foto 4" },
+        { src: "AutosM3/assets/Jeep Wrangler/jeep05.webp", thumb: "AutosM3/assets/Jeep Wrangler/thumbs/jeep05.webp",alt: "Jeep Wranfler 2014 foto 5" },
+        { src: "AutosM3/assets/Jeep Wrangler/jeep06.webp", thumb: "AutosM3/assets/Jeep Wrangler/thumbs/jeep06.webp",alt: "Jeep Wranfler 2014 foto 6" },
+        { src: "AutosM3/assets/Jeep Wrangler/jeep07.webp", thumb: "AutosM3/assets/Jeep Wrangler/thumbs/jeep07.webp",alt: "Jeep Wranfler 2014 foto 7" },
+        { src: "/AutosM3/assets/Jeep Wrangler/jeep08.webp", thumb: "AutosM3/assets/Jeep Wrangler/thumbs/jeep08.webp", alt: "Jeep Wranfler 2014 foto 8" },
         
     ],
 
