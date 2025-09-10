@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Detalles del Vehículo | AutoVentas M3</title>
+    <meta name="description" id="meta-description" content="">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="styless.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-bar">
+            <a href="index.html">
+                <img src="/assets/logo.png" alt="AutoVentas M3 Logo" class="logo-animado">
+            </a>
+            <h1>AUTOVENTAS <span class="brand-yellow">M3</span></h1>
+            <button id="hamburger" class="hamburger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <nav class="menu">
+            <a href="index.html">Inicio</a>
+            <a href="inventario.html">Inventario</a>
+            <a href="sobre--nosotros.html">Sobre Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="auto-header-info">
+            <h2 id="auto-title"></h2> 
+            <div class="ficha-visual" id="ficha-visual-container"></div>
+        </section>
+
+        <section class="detalle-visual">
+            <div class="left-column">
+                <div class="swiper main-gallery-swiper">
+                    <div class="swiper-wrapper" id="swiper-images"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="swiper swiper-thumbs-container">
+                    <div class="swiper-wrapper" id="thumbs-gallery"></div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <a href="inventario.html" class="btn-volver">← Volver al Inventario</a>
+                
+                <section class="desc-auto">
+                    <h3>Descripción del Vehículo</h3>
+                    <div id="auto-description"></div>
+                </section>
+
+                <section class="caracteristicas-destacadas">
+                    <h3>Características Destacadas</h3>
+                    <ul id="features-container"></ul>
+                </section>
+                
+                <section class="financiamiento">
+                    <h3>Contáctanos</h3>
+                    <p>
+                        ¿Necesitas más información o deseas agendar una cita para ver este auto? ¡Contáctanos!
+                    </p>
+                    <a id="btn-whatsapp" class="btn-hero" href="#" target="_blank">
+                        Contactar por WhatsApp
+                    </a>
+                </section>
+            </div>
+        </section>
+
+        <section class="mapa-auto">
+            <h3>Visítanos en nuestra ubicación</h3>
+            <div class="mapa-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15442.275037042583!2d-91.5658190772023!3d14.63007908581895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858913333423b093%3A0x6d042f02f90119e7!2sHuehuetenango%2C%20Guatemala!5e0!3m2!1ses-419!2sgt!4v1714494917172!5m2!1ses-419!2sgt" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background:#232323; color:#fff; padding:2rem 0 1rem 0; text-align:center;">
+        <span>© 2025 AutoVentas M3</span>
+        <div style="margin-top:1rem;">
+            <a href="https://www.facebook.com/profile.php?id=61569351009184" target="_blank" style="color:#ffd600; margin:0 1.5rem; text-decoration:none; font-weight:bold;">Facebook</a>
+            <a href="https://www.tiktok.com/@auto.ventas.m3?lang=es" target="_blank" style="color:#ffd600; margin:0 1.5rem; text-decoration:none; font-weight:bold;">TikTok</a>
+            <a href="https://api.whatsapp.com/send?phone=50237877930&text&context=AfeE7q7p7Mck" target="_blank" style="color:#ffd600; margin:0 1.5rem; text-decoration:none; font-weight:bold;">WhatsApp</a>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightbox = GLightbox({
+                'selector': '.glightbox'
+            });
+        });
+    </script>
+</body>
+</html>

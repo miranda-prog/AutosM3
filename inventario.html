@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario - AutoVentas M3</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   <header class="main-header">
+  <div class="logo-bar">
+    <a href="index.html">
+    <img src="assets/Jeep Wrangler/logo.png" alt="AutoVentas M3 Logo" class="logo-animado"></a>
+    <h1>AUTOVENTAS <span class="brand-yellow">M3</span></h1>
+    <button id="hamburger" class="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="menu">
+    <a href="index.html">Inicio</a>
+    <a href="inventario.html" class="active">Inventario</a>
+    <a href="/negocios.html">Negocios</a>
+    <a href="sobre--nosotros.html">Sobre Nosotros</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+</header>
+    <main>
+          <div class="buscador-container">
+  <div class="buscador-item">
+    <span class="icon"><svg height="18" width="18" fill="#ffe100" viewBox="0 0 24 24"><path d="M10 2a8 8 0 016.32 12.906l4.387 4.387a1 1 0 01-1.414 1.414l-4.387-4.387A8 8 0 1110 2zm0 2a6 6 0 100 12A6 6 0 0010 4z"/></svg></span>
+    <input type="text" id="buscador" placeholder="Buscar modelo...">
+  </div>
+  <div class="buscador-item">
+    <span class="icon"><svg height="18" width="18" fill="#ffe100" viewBox="0 0 24 24"><path d="M5 7h14v10H5V7zm2 2v6h10V9H7z" /></svg></span>
+    <select id="marca">
+      <option value="">Marca</option>
+      <option value="Jeep">Jeep</option>
+      <option value="Mazda">Mazda</option>
+      <option value="Chevrolet">Chevrolet</option>
+      <option value="Toyota">Toyota</option>
+      <option value="Hyundai">Hyundai</option>
+      <option value="Honda">Honda</option>
+      <option value="KTM">KTM</option>
+      <option value="Husqvarna">Husqvarna</option>
+
+    </select>
+  </div>
+  <div class="buscador-item">
+    <span class="icon"><svg height="18" width="18" fill="#ffe100" viewBox="0 0 24 24"><path d="M7 7v10h10V7H7zm2 2h6v6H9V9z"/></svg></span>
+    <select id="transmision">
+      <option value="">Transmisión</option>
+      <option value="Automática">Automática</option>
+      <option value="Manual">Manual</option>
+    </select>
+  </div>
+  <div class="buscador-item">
+    <span class="icon"><svg height="18" width="18" fill="#ffe100" viewBox="0 0 24 24"><path d="M4 17h16v2H4v-2zm0-2h16v-2H4v2zm0-4h16V9H4v2zm0-4h16V5H4v2z"/></svg></span>
+    <input type="text" id="precioMin" placeholder="Precio mín." inputmode="numeric" autocomplete="off">
+  </div>
+  <div class="buscador-item">
+    <span class="icon"><svg height="18" width="18" fill="#ffe100" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><text x="12" y="16" text-anchor="middle" font-size="8" fill="#181818" font-family="Arial" dy=".3em">Q</text></svg></span>
+   <input type="text" id="precioMax" placeholder="Precio máx." inputmode="numeric" autocomplete="off">
+  </div>
+</div>
+<div id="no-results" class="no-results hide">
+  <button onclick="resetBuscador()">
+    <span class="icon"><svg width="20" height="20" fill="#ffe100" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span>
+    No se encontraron resultados. <span>Restablecer</span>
+  </button>
+</div>
+
+        <section class="inventario-listado">
+            <h1>Inventario Completo</h1>
+            <div class="autos-grid">
+                <!-- Ejemplo de auto, repite el bloque para cada automóvil -->
+                <div class="auto-card">
+                    <div class="card-img-wrap">
+                        <img src="assets/Jeep Wrangler/jeep01.webp" alt="Jeep">
+                        <span class="card-label oferta">¡Oferta!</span>
+                    </div>
+                    <h3>Jeep Wrangler Sport 2014</h3>
+                    <ul class="auto-info">
+                        <li>Automática</li>
+                        <li>32,000 km</li>
+                        <li>Gris Plata</li>
+                    </ul>
+                    <p class="precio">Q.160,000</p>
+                    <a href="pages/jeep.html" class="btn-card">Ver Más</a>
+                </div>
+                <div class="auto-card">
+                    <div class="card-img-wrap">
+                        <img src="assets/mazda 2014/01.webp" alt="Chevrolet Onix">
+                        <span class="card-label destacado">Destacado</span>
+                    </div>
+                    <h3>Mazda Cx-5 2016</h3>
+                    <ul class="auto-info">
+                        <li>Automática</li>
+                        <li>18,500 km</li>
+                        <li>Blanco</li>
+                    </ul>
+                    <p class="precio">Q.80,000</p>
+                    <a href="pages/cx-5_2016.html" class="btn-card">Ver Más</a>
+                </div>
+                   <div class="auto-card">
+                    <div class="card-img-wrap">
+                        <img src="assets/captiva/01.webp" alt="Chevrolet Onix">
+                     
+                    </div>
+                    <h3>Chevrolet Captiva</h3>
+                    <ul class="auto-info">
+                        <li>Automática</li>
+                        <li>102,196 km</li>
+                        <li>Blanca</li>
+                    </ul>
+                    <p class="precio">Q.135,000</p>
+                    <a href="pages/captiva.html" class="btn-card">Ver Más</a>
+                </div>
+                   <div class="auto-card">
+                    <div class="card-img-wrap">
+                        <img src="assets/rav-4/01.webp" alt="Chevrolet Onix">
+                        
+                    </div>
+                    <h3>Toyota Rav-4</h3>
+                    <ul class="auto-info">
+                        <li>Automática</li>
+                        <li>18,500 km</li>
+                        <li>Gris</li>
+                    </ul>
+                    <p class="precio">Q.70,000</p>
+                    <a href="pages/rav-4.html" class="btn-card">Solicitar información</a>
+                </div>
+                   <div class="auto-card">
+                    <div class="card-img-wrap">
+                        <img src="assets/tucson/01.webp" alt="Chevrolet Onix">
+                        <span class="card-label oferta">¡Oferta!</span>
+                    </div>
+                    <h3>Hyundai Tucson </h3>
+                    <ul class="auto-info">
+                        <li>Automática</li>
+                        <li>18,500 km</li>
+                        <li>Negro</li>
+                    </ul>
+                    <p class="precio">Q.99,000</p>
+                    <a href="pages/Hyundai.html" class="btn-card">Solicitar información</a>
+                </div>
+                   <div class="auto-card">
+                    <div class="card-img-wrap">
+                        <img src="assets/ktm/01.webp" alt="Chevrolet Onix">
+                        <span class="card-label destacado">Destacado</span>
+                    </div>
+                    <h3>ktm duke 390</h3>
+                    <ul class="auto-info">
+                        <li>Manual</li>
+                        <li>18,500 km</li>
+                        <li>Naranja</li>
+                    </ul>
+                    <p class="precio">Q.28,000</p>
+                    <a href="pages/ktm.html" class="btn-card">Solicitar información</a>
+                </div>
+                   <div class="auto-card">
+                    <div class="card-img-wrap">
+                        <img src="assets/mazda 2.webp" alt="Chevrolet Onix">
+                        <span class="card-label vendido">¡VENDIDO!</span>
+                       
+                    </div>
+                    <h3>Mazda 2</h3>
+                    <ul class="auto-info">
+                        <li>Automática</li>
+                        <li>18,500 km</li>
+                        <li>Negro</li>
+                    </ul>
+                    <p class="precio">VENDIDO</p>
+                    <a href="inventario.html" class="btn-card">Ver Inventario</a>
+                </div>
+                   <div class="auto-card">
+                    <div class="card-img-wrap">
+                        <img src="assets/accent/01.webp" alt="Chevrolet Onix">
+
+                    </div>
+                    <h3>Hyundai Accent</h3>
+                    <ul class="auto-info">
+                        <li>Automática</li>
+                        <li>18,500 km</li>
+                        <li>Blanco</li>
+                    </ul>
+                    <p class="precio">Q.39,000</p>
+                    <a href="pages/accent.html" class="btn-card">Solicitar información</a>
+                </div>
+                   
+                <div class="auto-card">
+                    <div class="card-img-wrap">
+                        <img src="assets/mazda 2019/01.webp" alt="Chevrolet Onix">
+                        <span class="card-label oferta">¡Oferta!</span>
+                        
+                    </div>
+                    <h3>Mazda Cx-5 2019</h3>
+                    <ul class="auto-info">
+                        <li>Automática</li>
+                        <li>18,500 km</li>
+                        <li>Blanca</li>
+                    </ul>
+                    <p class="precio">Q.105,000</p>
+                    <a href="pages/cx-5_2019.html" class="btn-card">Solicitar información</a>
+                </div>
+                <div class="auto-card">
+                    <div class="card-img-wrap">
+                        <img src="assets/civic/01.webp" alt="Chevrolet Onix">
+                         
+                    </div>
+                    <h3>Honda Civic</h3>
+                    <ul class="auto-info">
+                        <li>Automática</li>
+                        <li>18,500 km</li>
+                        <li>Gris</li>
+                    </ul>
+                    <p class="precio">Q.36,500</p>
+                    <a href="pages/civic.html" class="btn-card">Solicitar información</a>
+                </div>
+                <div class="auto-card">
+                    <div class="card-img-wrap">
+                        <img src="assets/yaris/01.webp" alt="Chevrolet Onix">
+                        
+                    </div>
+                    <h3>Toyota Yaris</h3>
+                    <ul class="auto-info">
+                        <li>Automática</li>
+                        <li>18,500 km</li>
+                        <li>Gris</li>
+                    </ul>
+                    <p class="precio">Q.37,500</p>
+                    <a href="pages/yaris.html" class="btn-card">Solicitar información</a>
+                </div>
+                <div class="auto-card">
+                    <div class="card-img-wrap">
+                        <img src="assets/401.webp" alt="Chevrolet Onix">
+                         <span class="card-label vendido">¡VENDIDO!</span>
+                    </div>
+                    <h3>Husqvarna</h3>
+                    <ul class="auto-info">
+                        <li>Manual</li>
+                        <li>18,500 km</li>
+                        <li>Negro</li>
+                    </ul>
+                    <p class="precio">VENDIDO</p>
+                    <a href="/inventario.html" class="btn-card">Ver Inventario</a>
+                </div>
+                <!-- Agrega más autos aquí -->
+            </div>
+        </section>
+    </main>
+    <a href="https://api.whatsapp.com/send?phone=50237877930&text=¡Hola!%20%F0%9F%9A%97%20Vi%20su%20página%20web%20y%20me%20interesa%20obtener%20más%20información%20sobre%20sus%20vehículos.%20¡Gracias!" class="whatsapp-flotante" target="_blank" aria-label="Chatea con nosotros">
+    <img src="assets/wsp logo.png" alt="AutoVentas M3 WhatsApp" class="whatsapp-logo-button">
+</a>
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2025 AutoVentas M3</span>
+            <div class="redes">
+                 <a href="https://www.facebook.com/profile.php?id=61569351009184" target="_blank" class="fb">Facebook</a>
+                <a href="https://www.tiktok.com/@auto.ventas.m3?lang=es" target="_blank" class="tt">TikTok</a>
+                <a href="https://www.instagram.com/autoventasm3/" target="_blank" class="ig">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+       // BUSCADOR DE AUTOS
+function filtrarAutos() {
+  const query = document.getElementById("buscador").value.toLowerCase();
+  const marca = document.getElementById("marca").value.toLowerCase();
+  const transmision = document.getElementById("transmision").value.toLowerCase();
+  const precioMin = parseInt(document.getElementById("precioMin").value.replace(/,/g, '')) || 0;
+  const precioMax = parseInt(document.getElementById("precioMax").value.replace(/,/g, '')) || Infinity;
+
+  const cards = document.querySelectorAll(".auto-card");
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    let texto = card.innerText.toLowerCase();
+    const modelo = card.querySelector("h3")?.innerText || "";
+    const cardMarca = modelo.split(" ")[0].toLowerCase();
+    const lis = card.querySelectorAll(".auto-info li");
+    let cardTransmision = "";
+    lis.forEach(li => {
+      if (li.innerText.toLowerCase().includes("automática")) cardTransmision = "automática";
+      if (li.innerText.toLowerCase().includes("manual")) cardTransmision = "manual";
+    });
+    const precioStr = card.querySelector(".precio")?.innerText.replace(/[^\d]/g, '') || "0";
+    const cardPrecio = parseInt(precioStr);
+
+    const cumpleTexto = texto.includes(query);
+    const cumpleMarca = !marca || cardMarca === marca;
+    const cumpleTransmision = !transmision || cardTransmision === transmision;
+    const cumplePrecio = cardPrecio >= precioMin && cardPrecio <= precioMax;
+
+    if (cumpleTexto && cumpleMarca && cumpleTransmision && cumplePrecio) {
+      card.classList.remove("hide");
+      card.style.display = "block";
+      visibleCount++;
+    } else {
+      card.classList.add("hide");
+      // Espera la animación antes de ocultar totalmente
+      setTimeout(() => {
+        card.style.display = "none";
+      }, 300); // Debe coincidir con tu tiempo de transición en css
+    }
+  });
+
+  const noResults = document.getElementById("no-results");
+  if (visibleCount === 0) {
+    noResults.classList.remove("hide");
+  } else {
+    noResults.classList.add("hide");
+  }
+}
+
+// Reset buscador y mostrar todo
+function resetBuscador() {
+  document.getElementById("buscador").value = "";
+  document.getElementById("marca").value = "";
+  document.getElementById("transmision").value = "";
+  document.getElementById("precioMin").value = "";
+  document.getElementById("precioMax").value = "";
+  filtrarAutos();
+}
+
+// Enlaza filtros en tiempo real
+["buscador", "marca", "transmision", "precioMin", "precioMax"].forEach(id => {
+  document.getElementById(id).addEventListener("input", filtrarAutos);
+});
+// Ejecuta al cargar la página
+window.addEventListener("DOMContentLoaded", filtrarAutos);
+
+function formatMil(value) {
+  // Elimina caracteres no numéricos, convierte y formatea con miles
+  let num = value.replace(/[^\d]/g, '');
+  if (!num) return '';
+  return num.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+["precioMin", "precioMax"].forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener("input", function(e){
+    let caret = el.selectionStart;
+    let old = el.value;
+    el.value = formatMil(el.value);
+    // Mantener el cursor al final
+    if (el.value.length < old.length) caret--;
+    el.setSelectionRange(caret, caret);
+    filtrarAutos();
+  });
+});
+
+  // Menú hamburguesa funcional
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.querySelector('nav.menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navMenu.classList.toggle('open');
+    document.body.classList.toggle('menu-open');
+  });
+  // Cerrar menú al hacer click en enlace
+  document.querySelectorAll('nav.menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navMenu.classList.remove('open');
+      document.body.classList.remove('menu-open');
+    });
+  });
+</script>
+
+
+</body>
+</html>

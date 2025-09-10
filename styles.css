@@ -1,0 +1,1860 @@
+/* =========================
+   VARIABLES Y BASE
+   ========================= */
+:root {
+    --negro: #171717;
+    --gris-oscuro: #232323;
+    --gris: #3a3a3a;
+    --blanco: #fff;
+    --amarillo: #ffd600;
+    --gris-claro: #eaeaea;
+    --fuente: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+html, body {
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/*/ESTILOS DEL BUSCADOR EN INVENTARIO */
+.buscador-container {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto 22px auto;
+  flex-wrap: wrap;
+  max-width: 700px;
+}
+
+.buscador-item {
+  display: flex;
+  align-items: center;
+  background: #181818;
+  border-radius: 6px;
+  border: 1px solid #222;
+  padding: 5px 9px;
+  min-width: 120px;
+  margin-bottom: 0;
+}
+
+.buscador-item .icon {
+  margin-right: 7px;
+  display: flex;
+  align-items: center;
+}
+
+.buscador-item input,
+.buscador-item select {
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  height: 32px;
+  width: 100%;
+  min-width: 80px;
+  outline: none;
+}
+
+.buscador-item input::placeholder {
+  color: #999;
+}
+
+.no-results {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+.no-results.hide {
+  display: none;
+}
+.no-results button {
+  background: #232323;
+  color: #ffe100;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 22px;
+  font-size: 1.07rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+.no-results button:hover {
+  background: #181818;
+}
+
+/* Animación para tarjetas */
+.auto-card {
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 1;
+  transform: scale(1);
+  display: block;
+  align-items: center;
+}
+
+.auto-card.hide {
+  align-items: center;
+  opacity: 0;
+  transform: scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+  .buscador-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    max-width: 98vw;
+  }
+  .buscador-item {
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 0;
+    font-size: 1.03rem;
+  }
+  .buscador-item input,
+  .buscador-item select {
+    font-size: 1rem;
+    height: 34px;
+  }
+  .no-results button {
+    font-size: 1rem;
+    padding: 10px 12px;
+  }
+}
+/*FORZAR ESTILOS EN LISTAS*/
+/* Selects y opciones visibles en todos los navegadores */
+.buscador-item select, 
+.buscador-item option {
+  background: #222 !important;
+  color: #ffe100 !important;
+}
+
+.buscador-item select {
+  border: 1px solid #ffe100 !important;
+  border-radius: 6px !important;
+  font-size: 1rem;
+  height: 32px;
+}
+
+/* Para que el select se vea igual en todos los sistemas */
+.buscador-item select:focus {
+  outline: 2px solid #ffe100;
+}
+
+/* Opciones del select */
+.buscador-item option {
+  background: #222 !important;
+  color: #ffe100 !important;
+  font-size: 1rem;
+}
+
+/* Para navegadores que ignoran estilos de option, fuerza el select */
+.buscador-item select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 24px;
+}
+
+/* Icono flecha custom si quieres: */
+.buscador-item select {
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' fill='yellow' viewBox='0 0 20 20'%3E%3Cpath d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+.buscador-item input[type="text"] {
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+}
+
+
+
+body {
+    font-family: var(--fuente);
+    background: linear-gradient(135deg, #171717 0%, #232323 100%);
+    color: var(--blanco);
+    margin: 0;
+    padding: 0;
+    font-size: 1.07rem;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+}
+/* =========================
+   HERO SLIDER
+   ========================= */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    color: var(--blanco);
+}
+.hero-slider .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-slider .slide.active {
+    opacity: 1;
+}
+.slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.slide-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+.slide-content h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.slide-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+/* Contenido (texto y botón) sobre el slider */
+.hero-banner-content {
+  position: relative;
+  z-index: 2;
+  color: var(--blanco, #fff);
+  text-align: center;
+  width: 100%;
+  padding: 2.8rem 0.5rem 2.2rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-title-main {
+  font-size: 3.2rem;
+  font-weight: 900;
+  letter-spacing: 2.5px;
+  text-shadow: 0 8px 28px #000c, 0 4px 16px #000b;
+  margin-bottom: 0.6rem;
+}
+
+.brand-yellow {
+  color: #ffd600;
+}
+
+.hero-subtitle {
+  font-size: 1.38rem;
+  font-weight: 500;
+  margin-bottom: 1.4rem;
+  text-shadow: 0 2px 8px #000b;
+}
+
+.btn-hero {
+  background: linear-gradient(90deg, #ffd600 70%, #fffbe7 100%);
+  color: #232323;
+  font-weight: 700;
+  font-size: 1.3rem;
+  padding: 0.85rem 2.6rem;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 2px 18px #ffd60033;
+  border: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  margin-top: 0.5rem;
+}
+
+.btn-hero:hover {
+  background: #fffbe7;
+  color: #232323;
+  transform: scale(1.06);
+}
+
+/* Botones de navegación */
+.slider-controls {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.slider-controls button {
+  background: rgba(246, 0, 0, 0);
+  color: #ffffff00;
+  border: none;
+  padding: 10px 18px;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.slider-controls button:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .hero-slider {
+    min-height: 280px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+  }
+
+  .hero-banner-content {
+    /* Asegúrate de que el padding sea proporcional al nuevo tamaño */
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+    }
+
+  .hero-title-main {
+    font-size: 2.2rem;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .btn-hero {
+    font-size: 1.05rem;
+    padding: 0.65rem 1.3rem;
+  }
+}
+
+
+.slider-slides .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  /* Este es el filtro que hace que la imagen sea más oscura */
+  filter: brightness(0.65);
+}
+
+
+
+/* =========================
+   HEADER Y MENÚ
+   ========================= */
+.main-header {
+    background: var(--negro);
+    padding: 1rem 0.5rem;
+    text-align: center;
+    box-shadow: 0 2px 12px #00000025;
+}
+
+.logo-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    min-height: 90px; /* Aumentado para dar espacio al logo */
+    padding: 0 0.2rem;
+    position: relative;
+}
+/* BLOQUE SOLO PARA EL LOGO DEL HEADER */
+.logo-bar img {
+    height: 100px;       /* Ajusta aquí el tamaño que quieras */
+    max-width: 340px;    /* Ajusta si quieres limitar el ancho */
+    width: auto;
+    display: block;
+    margin-right: 0.7rem;
+    transition: height 0.2s;
+}
+
+/* Logo más pequeño en tablets/móviles */
+@media (max-width: 900px) {
+    .logo-bar img {
+        height: 100px;
+        max-width: 340px;
+    }
+}
+@media (max-width: 600px) {
+    .logo-bar img {
+        height: 46px;
+        max-width: 120px;
+        margin-right: 0.4rem;
+    }
+}
+
+@media (max-width: 800px) {
+  .slider-controls {
+    display: none;
+  }
+}
+
+.logo-bar h1 {
+    font-size: 8.1rem; /* Más grande y destacado */
+    line-height: 1.1;
+    font-weight: 900;
+    color: var(--blanco);
+    margin-right: auto;
+    margin-left: 0.15rem;
+    letter-spacing: 1px;
+}
+
+.brand-yellow {
+    color: #FFD600;
+}
+
+@media (max-width: 600px) {
+    .main-header {
+        padding: 0.6rem 0.2rem;
+    }
+    .logo-bar {
+        min-height: 58px;
+        gap: 0.35rem;
+    }
+    
+    .logo-bar h1 {
+        font-size: 1.15rem;
+    }
+}
+.brand-yellow { color: var(--amarillo); }
+/* --- Menú hamburguesa --- */
+        .hamburger {
+            display: flex;
+            position: relative;
+            margin-left: 0.5rem;
+            margin-right: 0.1rem;
+            height: 40px;
+            width: 40px;
+            top: 2px;
+            background: none;
+            border: none;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+        }
+        .hamburger span {
+            display: block;
+            height: 4px;
+            width: 32px;
+            margin: 5px auto;
+            background: #ffd600;
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(.4,0,.2,1);
+        }
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        nav.menu {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            transition: all 0.5s cubic-bezier(.4,0,.2,1);
+            z-index: 99;
+        }
+        nav.menu a {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 0.5rem 1.4rem;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        nav.menu a::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 4px;
+            width: 0;
+            height: 3px;
+            background: #ffd600;
+            border-radius: 2px;
+            transition: width 0.35s cubic-bezier(.4,0,.2,1), left 0.35s cubic-bezier(.4,0,.2,1);
+        }
+        nav.menu a:hover, nav.menu a.active {
+            background: #111;
+            color: #ffd600;
+            transform: scale(1.08);
+        }
+        nav.menu a:hover::after,
+        nav.menu a.active::after {
+            width: 80%;
+            left: 10%;
+        }
+
+        /* --- Responsive/Hamburguesa --- */
+        @media (max-width: 900px) {
+            .main-header {
+                padding: 0.6rem 0.5rem 0.6rem 0.5rem;
+                margin-bottom: 0.7rem;
+            }
+            .logo-bar {
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 0.2rem;
+                gap: 0.5rem;
+                min-height: 70px;
+            }
+            
+            .logo-bar h1 {
+                font-size: 1.22rem;
+                line-height: 1.1;
+                margin-right: auto;
+                margin-left: 0.15rem;
+                font-weight: 900;
+            }
+            .hamburger {
+                margin-left: 0.5rem;
+                margin-right: 0.1rem;
+                height: 40px;
+                width: 40px;
+                top: 2px;
+            }
+            nav.menu {
+                position: fixed;
+                flex-direction: column;
+                align-items: flex-start;
+                background: #232323f9;
+                top: 0; left: -100vw;
+                width: 230px;
+                height: 100vh;
+                padding: 4rem 2rem 2rem 2rem;
+                gap: 1.2rem;
+                box-shadow: 8px 0 32px #00000040;
+                z-index: 90;
+                opacity: 0;
+                pointer-events: none;
+                transition: left 0.46s cubic-bezier(.4,0,.2,1), opacity 0.3s;
+            }
+            nav.menu.open {
+                left: 0;
+                opacity: 1;
+                pointer-events: auto;
+            }
+            nav.menu a {
+                width: 100%;
+                font-size: 1.2rem;
+                margin-bottom: 0.7rem;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.35s, transform 0.35s;
+            }
+            nav.menu.open a {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            nav.menu.open a:nth-child(1) { transition-delay: 0.13s;}
+            nav.menu.open a:nth-child(2) { transition-delay: 0.22s;}
+            nav.menu.open a:nth-child(3) { transition-delay: 0.31s;}
+            nav.menu.open a:nth-child(4) { transition-delay: 0.4s;}
+        }
+        body.menu-open { overflow: hidden; }
+
+
+/* Menú principal */
+nav.menu {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    opacity: 0;
+    transform: translateY(-25px);
+    animation: menuFadeDown 0.9s cubic-bezier(.4,0,.2,1) 0.3s forwards;
+    transition: all 0.5s cubic-bezier(.4,0,.2,1);
+}
+nav.menu a {
+    color: var(--blanco);
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 0.5rem 1.4rem;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: menuItemCascada 0.7s cubic-bezier(.4,0,.2,1) forwards;
+}
+nav.menu a:nth-child(1) { animation-delay: 0.55s; }
+nav.menu a:nth-child(2) { animation-delay: 0.68s; }
+nav.menu a:nth-child(3) { animation-delay: 0.81s; }
+nav.menu a:nth-child(4) { animation-delay: 0.94s; }
+nav.menu a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+    width: 0;
+    height: 3px;
+    background: var(--amarillo);
+    border-radius: 2px;
+    transition: width 0.35s cubic-bezier(.4,0,.2,1), left 0.35s cubic-bezier(.4,0,.2,1);
+}
+nav.menu a:hover, nav.menu a.active {
+    background: #111;
+    color: var(--amarillo);
+    transform: scale(1.08);
+}
+nav.menu a:hover::after,
+nav.menu a.active::after {
+    width: 80%;
+    left: 10%;
+}
+
+/* Animaciones menú */
+@keyframes menuFadeDown {
+    from { opacity: 0; transform: translateY(-25px);}
+    to   { opacity: 1; transform: translateY(0);}
+}
+@keyframes menuItemCascada {
+    from { opacity: 0; transform: translateY(-20px);}
+    to   { opacity: 1; transform: translateY(0);}
+}
+
+
+
+/* =========================
+   SECCIONES Y CARDS
+   ========================= */
+section, .inventario-destacado, .inventario-listado, .sobre-nosotros, .contacto {
+    margin-bottom: 3.5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+.inventario-destacado,
+.inventario-listado,
+.sobre-nosotros,
+.contacto {
+    max-width: 1200px;
+    margin: 3rem auto 2rem auto;
+    padding: 2rem 2vw;
+    background: var(--gris-oscuro);
+    border-radius: 22px;
+    box-shadow: 0 6px 32px #d0f31f00;
+}
+.inventario-destacado h2,
+.inventario-listado h1,
+.sobre-nosotros h1{
+    text-align: center;
+    color: var(--amarillo);
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+.contacto h1 {
+    text-align: center;
+    color: var(--amarillo);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 800;
+}
+
+.somos {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: justify;
+    text-align: center;
+}
+/* =========================
+   AUTOS GRID Y CARDS
+   ========================= */
+.autos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    align-items: stretch;
+}
+@media (min-width: 1200px) {
+    .autos-grid { gap: 2.8rem; }
+}
+@media (max-width: 900px) {
+    .autos-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+    .autos-grid { grid-template-columns: 1fr; }
+}
+
+.auto-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra todo el contenido horizontalmente */
+  justify-content: flex-start;
+  background: #333;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+  padding-bottom: 18px;
+  margin: 16px 0;
+  width: 100%;
+}
+.auto-card:hover {
+    transform: translateY(-7px) scale(1.025);
+    box-shadow: 0 12px 36px #00000033;
+}
+@media (max-width: 600px) {
+    .auto-card { padding-bottom: 0.7rem; }
+}
+
+.card-img-wrap {
+    width: 100%;
+    position: relative;
+}
+.card-img-wrap img {
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+    display: block;
+}
+
+
+
+.card-label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--amarillo);
+    color: var(--negro);
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px #ffd60033;
+}
+.card-label.oferta {
+    background: #ff0000;
+    color: var(--blanco);
+}
+.card-label.destacado {
+    background: var(--amarillo);
+    color: var(--negro);
+}
+
+.card-label.vendido{
+    background: rgb(255, 85, 0);
+    color: var(--white);
+      }
+.auto-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--amarillo);
+    margin: 1rem 0 0.3rem 0;
+    text-align: center;
+}
+.auto-info {
+    padding: 0;
+    margin: 0.5rem 0;
+    color: var(--gris-claro);
+    list-style: none;
+    font-size: 0.98rem;
+    text-align: center;
+}
+.precio {
+    color: var(--blanco);
+    font-size: 1.30rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    margin-top: 0.4rem;
+    text-align: center;
+}
+.btn-card {
+    background: var(--amarillo);
+    color: var(--negro);
+    padding: 0.6rem 1.6rem;
+    border: none;
+    border-radius: 22px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 0.3rem;
+    transition: background 0.18s, color 0.18s;
+    text-align: center;
+}
+.btn-card:hover {
+    background: var(--blanco);
+    color: var(--negro);
+}
+@media (max-width: 600px) {
+    .btn-hero, .btn-card {
+        font-size: 1.15rem;
+        padding: 1rem 2.5rem;
+        border-radius: 32px;
+        text-align: center;
+    }
+}
+
+/* =========================
+   CONTACTO Y FORMULARIO
+   ========================= */
+.contacto-lista {
+    list-style: none;
+    margin-bottom: 2rem;
+    color: var(--amarillo);
+    font-size: 1.09rem;
+    padding: 0;
+}
+.formulario-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 380px;
+    margin: 0 auto;
+}
+.formulario-contacto label {
+    font-weight: 600;
+    color: var(--amarillo);
+}
+.formulario-contacto input,
+.formulario-contacto textarea {
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid var(--gris);
+    background: #232323;
+    color: var(--blanco);
+    font-size: 1rem;
+    resize: none;
+}
+.formulario-contacto input:focus,
+.formulario-contacto textarea:focus {
+    outline: 2px solid var(--amarillo);
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+footer {
+    background-color: var(--negro); /* Fondo oscuro para el footer */
+    color: var(--blanco);
+    padding: 2rem 1.5rem; /* Más espacio arriba y abajo */
+    text-align: center; /* Centra todo el texto y los elementos */
+}
+
+.footer-content {
+    display: flex; /* Utiliza Flexbox para el diseño */
+    flex-direction: column; /* Apila el contenido verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    max-width: 1200px; /* Limita el ancho del contenido */
+    margin: 0 auto; /* Centra el contenedor principal */
+}
+
+.footer-content span {
+    font-size: 0.9rem; /* Tamaño de fuente más pequeño para el copyright */
+    color: var(--gris-claro);
+    margin-bottom: 1rem; /* Espacio entre el copyright y las redes */
+}
+
+.redes {
+    display: flex; /* Coloca los enlaces de redes en una fila */
+    gap: 1.5rem; /* Espacio entre los enlaces */
+}
+
+.redes a {
+    color: var(--gris-claro); /* Color gris claro para los enlaces */
+    text-decoration: none; /* Quita el subrayado */
+    font-weight: 600;
+    transition: color 0.3s ease; /* Transición suave del color */
+}
+
+.redes a:hover {
+    color: var(--amarillo); /* Cambia a amarillo al pasar el cursor */
+}
+
+/* Ajustes para móvil */
+@media (max-width: 600px) {
+    footer {
+        padding: 1.5rem 1rem; /* Menos espacio en móvil */
+    }
+    
+    .footer-content span {
+        font-size: 0.8rem;
+    }
+}
+/* HERO BANNER: imagen ocupa todo el ancho en móvil */
+@media (max-width: 600px) {
+    .hero-banner {
+        max-width: 100vw;
+        width: 100vw;
+        border-radius: 0 0 18px 18px;
+        margin: 0 auto 2rem auto;
+    }
+    .hero-banner-img {
+        width: 100vw;
+        min-width: 100vw;
+        max-width: 100vw;
+        height: 150px;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+
+
+/* =========================
+   RESPONSIVE AJUSTES
+   ========================= */
+@media (max-width: 600px) {
+    .nav { flex-direction: column; gap: 1rem; }
+    .inventario-destacado,
+    .inventario-listado,
+    .sobre-nosotros,
+    .contacto { padding: 1rem 1vw; }
+    .hero-content h1 { font-size: 2rem; }
+    .hero-banner-img { height: 150px; }
+    .hero-title-main { font-size: 1.3rem; }
+    .hero-banner-content { padding: 0.6rem 0.3rem; }
+    .hero-car { max-width: 90vw; margin-bottom: 0.7rem; }
+}
+@media (min-width: 900px) {
+ 
+    .logo-bar h1 { font-size: 2rem; }
+}
+
+
+/* =========================
+   ESTILOS ADICIONALES
+   ========================= */
+.auto-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btn-card {
+  display: block;
+  margin: 7px auto 0 auto;
+  background: #ffe100; /* temporal, para que veas el cambio */
+  color: #181818;
+  border: none;
+  border-radius: 25px;
+  padding: 11px 28px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+@media (max-width: 800px) {
+
+/* Ocultar las flechas de navegación en móvil */
+.slider-controls {
+display: none;
+}
+
+/*/
+Ajustes para el contenedor principal del slider
+para que tenga un tamaño similar al banner de "Sobre Nosotros"
+/*/
+.hero-slider {
+min-height: 250px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+position: relative;
+}
+
+
+.hero-banner-content {
+
+padding-top: 0.5rem;
+padding-bottom: 0.5rem;
+}
+
+
+.slider-slides .slide {
+object-fit: cover;
+filter: brightness(0.65); 
+}
+
+.header-menu {
+
+display: none;
+
+}
+
+/* Ajustes para la galería de "Sobre Nosotros" en móvil */
+    .gallery-item {
+        height: 150px; /* Ajusta la altura para móvil si es necesario */
+    }
+
+    .gallery-overlay {
+        opacity: 1; /* Siempre visible en móvil */
+        background-color: rgba(0, 0, 0, 0.5); /* Menos oscuro si quieres el fondo un poco visible */
+    }
+
+    .gallery-overlay h3 {
+        transform: translateY(0); /* Siempre visible y sin transformación inicial */
+        opacity: 1;
+        font-size: 1.1rem; /* Ajusta el tamaño de fuente si es necesario */
+    }
+}
+/* =========================
+   PÁGINA DE NEGOCIOS
+   ========================= */
+.negocios-container {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.info-negocios {
+    background-color: var(--gris-oscuro);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgb(227, 0, 0);
+    margin-bottom: 2rem;
+}
+
+.info-negocios h2 {
+    color: var(--amarillo);
+}
+
+.formulario-negocios {
+    background-color: var(--gris-oscuro);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formulario-negocios h3 {
+    color: var(--amarillo);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-grid > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-negocios label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--amarillo);
+}
+
+.formulario-negocios input[type="text"],
+.formulario-negocios input[type="email"],
+.formulario-negocios input[type="tel"],
+.formulario-negocios input[type="number"],
+.formulario-negocios textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--negro);
+    color: var(--blanco);
+    border: 1px solid var(--gris);
+    border-radius: 5px;
+    font-family: var(--fuente);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.formulario-negocios input:focus,
+.formulario-negocios textarea:focus {
+    outline: none;
+    border-color: var(--amarillo);
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+#btn-negocios-enviar {
+    align-self: flex-start;
+}
+
+/* --- PÁGINA DE CONTACTO --- */
+.contacto-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.form-contacto {
+    background-color: var(--gris-oscuro);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.form-contacto label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--amarillo);
+}
+.form-contacto input,
+.form-contacto textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid var(--gris);
+    border-radius: 5px;
+    background-color: var(--negro);
+    color: var(--blanco);
+    font-family: var(--fuente);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+.form-contacto input:focus,
+.form-contacto textarea:focus {
+    outline: none;
+    border-color: var(--amarillo);
+}
+.form-contacto textarea {
+    resize: vertical;
+}
+.mensaje-exito,
+.mensaje-error {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    font-weight: bold;
+    display: none;
+}
+.mensaje-exito {
+    background-color: #28a745;
+    color: var(--blanco);
+}
+.mensaje-error {
+    background-color: #dc3545;
+    color: var(--blanco);
+}
+/* --- PÁGINA SOBRE NOSOTROS --- */
+.about-section {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.about-info-block {
+    background-color: var(--gris-oscuro);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(202, 10, 10, 0.2);
+}
+
+.about-info-block h2 {
+    color: var(--amarillo);
+    font-size: 2rem;
+    margin-top: 0;
+}
+.about-info-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.about-info-block ul li {
+    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffd600"%3E%3Cpath d="M0 0h24v24H0z" fill="none"/%3E%3Cpath d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/%3E%3C/svg%3E') no-repeat left center;
+    background-size: 24px;
+    padding-left: 30px;
+    margin-bottom: 0.8rem;
+}
+.testimonial-section {
+    position: relative;
+}
+.testimonial-slider {
+    position: relative;
+    height: 150px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+.testimonial-slide {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    text-align: center;
+}
+.testimonial-slide.active {
+    opacity: 1;
+}
+.testimonial-slide blockquote {
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 0;
+}
+.testimonial-slide blockquote span {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--amarillo);
+}
+.testimonial-controls {
+    text-align: center;
+    margin-top: 1rem;
+}
+.testimonial-controls button {
+    background: transparent;
+    color: var(--amarillo);
+    border: 1px solid var(--amarillo);
+    border-radius: 10%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0 5px;
+}
+.testimonial-controls button:hover {
+    background-color: var(--amarillo);
+    color: var(--negro);
+}
+/* --- PÁGINA DE NEGOCIOS --- */
+.negocios-container {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.info-negocios {
+    background-color: var(--gris-oscuro);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+}
+.info-negocios h2 {
+    color: var(--amarillo);
+}
+.formulario-negocios {
+    background-color: var(--gris-oscuro);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.formulario-negocios h3 {
+    color: var(--amarillo);
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.form-grid > div {
+    display: flex;
+    flex-direction: column;
+}
+.formulario-negocios label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--amarillo);
+}
+.formulario-negocios input[type="text"],
+.formulario-negocios input[type="email"],
+.formulario-negocios input[type="tel"],
+.formulario-negocios input[type="number"],
+.formulario-negocios textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid var(--gris);
+    border-radius: 5px;
+    background-color: var(--negro);
+    color: var(--blanco);
+    font-family: var(--fuente);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+.formulario-negocios input:focus,
+.formulario-negocios textarea:focus {
+    outline: none;
+    border-color: var(--amarillo);
+}
+.formulario-negocios textarea {
+    resize: vertical;
+}
+.full-width {
+    grid-column: 1 / -1;
+}
+/* =========================
+   PÁGINA SOBRE NOSOTROS
+   ========================= */
+.about-section {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.about-header {
+    text-align: center;
+}
+
+.about-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--amarillo);
+}
+
+.about-header p {
+    font-size: 1.1rem;
+    color: var(--gris-claro);
+}
+
+/* =========================
+   GALERÍA DE IMÁGENES
+   ========================= */
+.about-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    height: 180px; /* HACE LAS IMÁGENES MÁS RECTANGULARES */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-overlay h3 {
+    color: var(--blanco);
+    text-align: center;
+    padding: 0 1rem;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+/* Efecto de hover para escritorio */
+@media (min-width: 901px) {
+  .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+  }
+
+  .gallery-item:hover .gallery-overlay h3 {
+      transform: translateY(0);
+  }
+}
+
+/* Reglas específicas para móvil */
+@media (max-width: 900px) {
+  .gallery-overlay {
+    opacity: 1; /* El texto siempre será visible en móvil */
+    background-color: rgba(0, 0, 0, 0.5); /* Sutil opacidad para que se vea el texto */
+  }
+
+  .gallery-overlay h3 {
+    transform: translateY(0); /* El texto siempre estará en su posición final */
+  }
+}
+
+/* Cajas de texto y testimonios */
+.about-cards-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.about-card {
+    background-color: var(--gris-oscuro);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.about-card i {
+    font-size: 3rem;
+    color: var(--amarillo);
+    margin-bottom: 1rem;
+}
+
+.about-card h3 {
+    color: var(--blanco);
+    margin-bottom: 0.5rem;
+}
+
+.about-testimonial-slider {
+    background-color: var(--gris-oscuro);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-testimonial-slider h3 {
+    text-align: center;
+    color: var(--amarillo);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-slide {
+    display: none;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.testimonial-slide.active {
+    display: block;
+}
+
+.testimonial-slide blockquote {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+}
+
+.testimonial-slide blockquote span {
+    display: block;
+    margin-top: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--gris-claro);
+}
+
+.testimonial-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.testimonial-controls button {
+    background-color: var(--gris);
+    color: var(--blanco);
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}*/* =========================
+   SLIDER DE TESTIMONIOS (Ajustes finales)
+   ========================= */
+
+
+.testimonial-container {
+    position: relative;
+    width: 100%;
+    /* Ajusta la altura para dar espacio al testimonio y al nombre */
+    height: 150px; 
+    overflow: hidden;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.testimonial-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.testimonial-slide.active {
+    opacity: 1;
+}
+
+.testimonial-slide blockquote {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--blanco);
+    margin: 0;
+    padding: 0;
+    max-width: 100%; /* Ajustado al 100% para que se ajuste mejor al contenedor */
+    line-height: 1.6;
+    word-wrap: break-word; /* Asegura que las palabras largas se rompan */
+}
+
+.testimonial-slide blockquote span {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1rem; /* Reducido de 1.1rem para que quepa en móvil */
+    color: var(--amarillo);
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* --- AJUSTES PARA MÓVILES (Menor a 600px) --- */
+@media (max-width: 600px) {
+    .testimonials-section {
+        margin: 2rem 10px; /* Margen a 10px en los lados para que no toque los bordes */
+        padding: 1.8rem 1rem;
+        max-width: 95%; 
+    }
+
+    .testimonial-container {
+        /* Aumentado a 180px, es un buen punto intermedio para la mayoría de testimonios */
+        height: 180px; 
+    }
+
+    .testimonial-slide blockquote {
+        font-size: 1.1rem; 
+        text-align: center;
+        margin: 0; 
+        padding: 0;
+    }
+    
+    .testimonial-slide blockquote span {
+        font-size: 0.9rem; /* Reducido para que el nombre quepa en una sola línea */
+    }
+
+    .testimonial-controls {
+        gap: 0.8rem;
+        margin-top: 1.2rem;
+    }
+
+    .testimonial-controls button {
+        font-size: 1.3rem;
+        width: 40px;
+        height: 40px;
+    }
+}
+/* =========================
+   CONTACTO Y FORMULARIO (AJUSTES)
+   ========================= */
+
+/* =========================
+   SECCIÓN DE CONTACTO
+   ========================= */
+.contacto-container {
+    background-color: var(--gris-oscuro);
+    max-width: 900px;
+    margin: 3.5rem auto;
+    padding: 3rem;
+    border-radius: 22px;
+    box-shadow: 0 6px 32px #00000025;
+    text-align: center; /* Asegura que todo el contenido del contenedor esté centrado */
+}
+
+/* Estilo para el título principal "CONTACTO" */
+.contacto-container .main-contact-title { /* Apuntamos específicamente a esta clase */
+    font-size: 2.2rem;
+    color: var(--amarillo); /* Color amarillo */
+    margin-bottom: 2rem;
+    font-weight: 800;
+    text-align: center; /* Centrar explícitamente el título */
+}
+
+/* Estilos de los iconos de redes sociales */
+.redes-contacto {
+    display: flex;
+    justify-content: center; /* Centra los íconos horizontalmente */
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.redes-contacto a {
+    color: var(--amarillo);
+    font-size: 2.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.redes-contacto a:hover {
+    color: var(--blanco);
+    transform: scale(1.15);
+}
+
+
+.redes-contacto a:hover {
+    color: var(--blanco); /* Cambia a amarillo al pasar el cursor */
+}
+
+.contacto-lista li i {
+    color: var(--amarillo); /* El ícono del teléfono es amarillo */
+    margin-right: 0.8rem;
+}
+
+
+/* Estilos del formulario de contacto (mantenemos los mismos) */
+.section-title { /* Título "Contáctanos" */
+    font-size: 1.8rem;
+    color: var(--blanco); /* Puedes cambiarlo a amarillo si quieres */
+    margin-top: 2.5rem; /* Espacio antes del título del formulario */
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.section-subtitle { /* Subtítulo "Estamos aquí para resolver..." */
+    font-size: 1rem;
+    color: var(--gris-claro);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-contacto { /* Cambié de .formulario-contacto a .form-contacto */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-contacto label {
+    font-weight: 600;
+    color: var(--amarillo);
+}
+
+.form-contacto input,
+.form-contacto textarea {
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid var(--gris);
+    background: var(--negro);
+    color: var(--blanco);
+    font-size: 1rem;
+    resize: none;
+}
+
+.form-contacto input:focus,
+.form-contacto textarea:focus {
+    outline: 2px solid var(--amarillo);
+    border-color: transparent;
+}
+
+.btn-hero { /* Clase del botón de enviar */
+    background-color: var(--amarillo);
+    color: var(--negro);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-hero:hover {
+    background-color: #f7e155;
+}
+
+/* Mensajes de éxito/error (asegúrate de que tengan un estilo para no interferir) */
+.mensaje-exito, .mensaje-error {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    border-radius: 5px;
+    font-weight: 600;
+    display: none; /* Por defecto oculto */
+}
+.mensaje-exito {
+    background-color: #d4edda;
+    color: #155724;
+}
+.mensaje-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+
+/* --- AJUSTES PARA MÓVILES (Menor a 600px) --- */
+@media (max-width: 600px) {
+    .contacto-container {
+        padding: 2rem 1rem;
+        margin: 2rem 10px;
+    }
+
+    .contacto-container .main-contact-title {
+        font-size: 1.8rem;
+    }
+
+    .redes-contacto {
+        gap: 1.5rem;
+    }
+
+    .redes-contacto a {
+        font-size: 2.2rem;
+    }
+
+    .contacto-lista {
+        font-size: 1rem;
+        align-items: center; /* Centrar también en móvil si solo hay 1 elemento */
+    }
+
+    .contacto-lista li a {
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .form-contacto {
+        max-width: 100%;
+        gap: 1rem;
+    }
+
+    .btn-hero {
+        width: 100%;
+    }
+}
+
+contacto-container {
+    background-color: var(--gris-oscuro);
+    max-width: 900px;
+    margin: 3.5rem auto;
+    padding: 3rem;
+    border-radius: 22px;
+    box-shadow: 0 6px 32px #00000025;
+    text-align: center;
+}
+.whatsapp-flotante {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: transparent; /* Fondo transparente o el color que quieras */
+    width: 70px; /* Ajusta el tamaño del botón */
+    height: 70px;
+    border-radius: 50%; /* Si quieres que el botón sea circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-flotante:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-logo-button {
+    width: 100%; /* Ocupa todo el ancho del botón */
+    height: 100%; /* Ocupa todo el alto del botón */
+    object-fit: cover; /* Ajusta la imagen para que llene el espacio */
+    border-radius: 50%; /* Si el botón es circular, la imagen también */
+}
+
+@media (max-width: 600px) {
+    .whatsapp-flotante {
+        width: 60px;
+        height: 60px;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+/* Nuevo CSS para las miniaturas de la galería */
+/* Nuevo CSS para las miniaturas de la galería */
+.swiper-thumbs-container {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 1rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.swiper-thumbs-container .swiper-slide {
+    width: 25% !important; 
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.swiper-thumbs-container .swiper-slide:hover {
+    opacity: 1;
+}
+
+.swiper-thumbs-container .swiper-slide.swiper-slide-thumb-active {
+    opacity: 1;
+}
+
+.swiper-thumbs-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.swiper-thumbs-container .swiper-slide-thumb-active img {
+    border-color: var(--amarillo);
+}

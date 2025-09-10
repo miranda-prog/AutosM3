@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Detalles del Vehículo | AutoVentas M3</title>
+    <meta name="description" id="meta-description" content="">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="styless.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-bar">
+            <a href="../index.html">
+                <img src="/assets/logo.png" alt="AutoVentas M3 Logo" class="logo-animado">
+            </a>
+            <h1>AUTOVENTAS <span class="brand-yellow">M3</span></h1>
+            <button id="hamburger" class="hamburger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <nav class="menu">
+            <a href="../index.html">Inicio</a>
+            <a href="../inventario.html" class="active">Inventario</a>
+            <a href="../negocios.html">Negocios</a>
+            <a href="../sobre--nosotros.html">Sobre Nosotros</a>
+            <a href="../contacto.html">Contacto</a>
+        </nav>
+    </header>
+    <main>
+        <section class="detalle-visual">
+            <a href="../inventario.html" class="btn-volver">← Volver al inventario</a>
+            <h2 id="auto-name"></h2>
+            <div class="swiper">
+                <div class="swiper-wrapper" id="swiper-images">
+                    </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+            <div class="thumbs-gallery" id="thumbs-gallery">
+                </div>
+            <div class="ficha-visual" id="ficha-tecnica">
+                </div>
+            <div class="financiamiento">
+                <span>✔ Cuotas Credomatic | VisaCuotas |¿Piensas en algun Negocio? ¡Contactanos!</span>
+            </div>
+            <div class="desc-auto" id="auto-description">
+                </div>
+            <div class="mapa-auto">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4749.525044332565!2d-90.56725652412491!3d14.659830775622297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85899f803f155a81%3A0x26eb75e03940c89a!2sBulevar%20San%20Nicolas%2C%20Ciudad%20de%20Guatemala!5e1!3m2!1ses-419!2sgt!4v1756036559601!5m2!1ses-419!2sgt" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="info-contacto">
+                <span>Asesor: Humberto López</span>
+                <span>Tel: <a href="tel:50237877930" style="color:#ffd600;">+502 3787-7930</a></span>
+            </div>
+            <a class="btn-contactar" href="https://api.whatsapp.com/send?phone=50237877930&text=%C2%A1Hola!%20%F0%9F%91%8B%20Vi%20el%20Honda%20Civic%202010%20en%20su%20p%C3%A1gina%20web%20y%20me%20interesa%20mucho.%20%C2%BFPodr%C3%ADan%20darme%20m%C3%A1s%20informaci%C3%B3n%3F%20%C2%A1Gracias!%20%E2%9C%A8" target="_blank">
+                Contactar por WhatsApp
+            </a>
+        </section>
+    </main>
+    <a href="https://api.whatsapp.com/send?phone=50237877930&text=¡Hola!%20%F0%9F%9A%97%20Vi%20su%20página%20web%20y%20me%20interesa%20obtener%20más%20información%20sobre%20sus%20vehículos.%20¡Gracias!" class="whatsapp-flotante" target="_blank" aria-label="Chatea con nosotros">
+    <img src="/assets/wsp logo.png" alt="AutoVentas M3 WhatsApp" class="whatsapp-logo-button">
+</a>
+    <footer style="background:#232323; color:#fff; padding:2rem 0 1rem 0; text-align:center;">
+        <span>© 2025 AutoVentas M3</span>
+        <div style="margin-top:1rem;">
+            <a href="https://www.facebook.com/profile.php?id=61569351009184" target="_blank" style="color:#ffd600; margin:0 1.5rem; text-decoration:none; font-weight:bold;">Facebook</a>
+            <a href="https://www.tiktok.com/@auto.ventas.m3?lang=es" target="_blank" style="color:#ffd600; margin:0 1.5rem; text-decoration:none; font-weight:bold;">TikTok</a>
+          
+             <a href="https://www.instagram.com/autoventasm3/" target="_blank" style="color:#ffd600; margin:0 1.5rem; text-decoration:none; font-weight:bold;">Instagram</a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="../app.js"></script>
+    <script src="../autos-data/civic.js"></script>
+</body>
+</html>
